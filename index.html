@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAUPROJEKT-WISSEN</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f5f7;
+      color: #1f2933;
+    }
+    header {
+      background: #17212b;
+      color: white;
+      padding: 28px 6%;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+    }
+    .brand {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .subtitle {
+      margin-top: 6px;
+      color: #cbd5df;
+      font-size: 15px;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 6%;
+    }
+    .hero {
+      background: white;
+      border-radius: 16px;
+      padding: 34px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.06);
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+    .hero p {
+      color: #66737f;
+      margin-bottom: 24px;
+    }
+    .search {
+      width: 100%;
+      padding: 16px 18px;
+      border: 1px solid #d5dbe1;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+    .search:focus { border-color: #657786; }
+    .section-title {
+      margin: 34px 0 16px;
+      font-size: 22px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px;
+      min-height: 135px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.05);
+      border: 1px solid #e5e8eb;
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 22px rgba(0,0,0,.09);
+    }
+    .icon { font-size: 30px; }
+    .card h3 {
+      margin: 12px 0 6px;
+      font-size: 18px;
+    }
+    .card p {
+      margin: 0;
+      color: #74808a;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .baukasten {
+      background: #17212b;
+      color: white;
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 30px;
+    }
+    .baukasten h2 { margin-top: 0; }
+    .types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .type {
+      background: #2b3945;
+      padding: 11px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 6% 40px;
+      color: #7a858e;
+      font-size: 13px;
+    }
+    #results {
+      margin-top: 18px;
+      display: none;
+      padding: 16px;
+      background: #f7f8f9;
+      border-radius: 10px;
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 24px; }
+      .hero h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">BAUPROJEKT-WISSEN</div>
+    <div class="subtitle">Zentrale Wissensplattform für Planung, Baukasten, Standards und Projekte</div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1>Willkommen</h1>
+    <p>
+      Alle wichtigen Informationen für die Planung und Gestaltung von Geschäften
+      zentral an einem Ort.
+    </p>
+
+    <input
+      id="search"
+      class="search"
+      type="search"
+      placeholder="🔎  Material, Möbel, Beleuchtung, Baukasten oder Artikel suchen ..."
+      oninput="searchContent()"
+    >
+
+    <div id="results"></div>
+  </section>
+
+  <h2 class="section-title">Wissensbereiche</h2>
+
+  <section class="grid">
+
+    <div class="card" onclick="showMessage('Baukasten')">
+      <div class="icon">🏪</div>
+      <h3>Baukasten</h3>
+      <p>Gestaltungstypen, Geschäftsbereiche und standardisierte Ausführungen.</p>
+    </div>
+
+    <div class="card" onclick="showMessage('Materialien')">
+      <div class="icon">🧱</div>
+      <h3>Materialien</h3>
+      <p>Böden, Wände, Decken, Fliesen und Oberflächen.</p>
+    </div>
+
+    <div class="card" onclick="showMessage('Möbel')">
+      <div class="icon">🪑</div>
+      <h3>Möbel</h3>
+      <p>Innenmöbel und Ausstattung für die verschiedenen Bereiche.</p>
+    </div>
+
+    <div class="card" onclick="showMessage('Beleuchtung')">
+      <div class="icon">💡</div>
+      <h3>Beleuchtung</h3>
+      <p>Leuchten, Pendelleuchten und technische Informationen.</p>
+    </div>
+
+    <div class="card" onclick="showMessage('Revit')">
+      <div class="icon">📐</div>
+      <h3>Revit</h3>
+      <p>Freigegebene Revit-Familien und Planungsinformationen.</p>
+    </div>
+
+    <div class="card" onclick="showMessage('Standards')">
+      <div class="icon">📋</div>
+      <h3>Standards</h3>
+      <p>Aktuelle Standards, Vorgaben und Freigabestatus.</p>
+    </div>
+
+    <div class="card" onclick="showMessage('Projekte')">
+      <div class="icon">🏗️</div>
+      <h3>Projekte</h3>
+      <p>Projektinformationen, Planungsstände und Dokumente.</p>
+    </div>
+
+    <div class="card" onclick="showMessage('Lieferanten')">
+      <div class="icon">🚚</div>
+      <h3>Lieferanten</h3>
+      <p>Hersteller, Lieferanten und zugehörige Produkte.</p>
+    </div>
+
+  </section>
+
+  <section class="baukasten">
+    <h2>Gestaltungstypen</h2>
+    <p>Die vorhandenen Baukasten-Typen als zentrale Auswahl.</p>
+
+    <div class="types">
+      <div class="type">Maritim</div>
+      <div class="type">Auf dem Lande</div>
+      <div class="type">Vorstadt / Fußgängerzone</div>
+      <div class="type">Dunkle Backstube</div>
+      <div class="type">Urban</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  BAUPROJEKT-WISSEN · Erste Prototyp-Version
+</footer>
+
+<script>
+  const content = [
+    "Baukasten Maritim",
+    "Baukasten Auf dem Lande",
+    "Baukasten Vorstadt Fußgängerzone",
+    "Baukasten Dunkle Backstube",
+    "Baukasten Urban",
+    "Materialien Boden Wand Decke Fliesen",
+    "Möbel Innenmöbel Café Verkauf Rückbereich",
+    "Beleuchtung Pendelleuchten",
+    "Revit Familien",
+    "Standards",
+    "Projekte",
+    "Lieferanten"
+  ];
+
+  function searchContent() {
+    const input = document.getElementById("search");
+    const results = document.getElementById("results");
+    const term = input.value.toLowerCase().trim();
+
+    if (!term) {
+      results.style.display = "none";
+      results.innerHTML = "";
+      return;
+    }
+
+    const matches = content.filter(item =>
+      item.toLowerCase().includes(term)
+    );
+
+    results.style.display = "block";
+
+    if (matches.length) {
+      results.innerHTML =
+        "<strong>Suchergebnisse:</strong><br><br>" +
+        matches.map(item => "• " + item).join("<br>");
+    } else {
+      results.innerHTML = "Keine passenden Einträge gefunden.";
+    }
+  }
+
+  function showMessage(area) {
+    alert(area + " – dieser Bereich wird als nächster Schritt aufgebaut.");
+  }
+</script>
+
+</body>
+</html>
